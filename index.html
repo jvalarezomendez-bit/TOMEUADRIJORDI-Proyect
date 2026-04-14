@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TJA Gym - Inicio</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    
+<header>
+    <h1>TJA Gym</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="content.html">Contenido</a></li>
+            <li><a href="detail.html">Detalles</a></li>
+            <li><a href="info.html">Información</a></li>
+            <li><a href="login.html">Iniciar Sesión</a></li>
+            <li><a href="contact.html">Contacto</a></li>
+        </ul>
+    </nav>
+    <button id="btnModo" onclick="toggleModo()">🌙 Modo Oscuro</button>
+</header>
+
+<main>
+    <section id="introduccion">
+        <h1>Bienvenido a TJA Gym</h1>
+        
+        <p>
+            <strong>TJA Gym</strong> es tu centro de entrenamiento ideal donde conseguirás 
+            alcanzar tus objetivos fitness. Con más de 10 años de experiencia, ofrecemos 
+            instalaciones modernas y un equipo de profesionales cualificados para acompañarte 
+            en tu transformación.
+        </p>
+        
+        <h2>¿Por qué elegirnos?</h2>
+        
+        <p>
+            En TJA combinamos tecnología de última generación con un ambiente motivador 
+            y cercano. Nuestro gimnasio cuenta con amplias salas de musculación, zonas de 
+            cardio, clases dirigidas y espacios especializados para diferentes disciplinas.
+        </p>
+        
+        <p>
+            Ya seas principiante o deportista experimentado, tenemos el programa perfecto 
+            para ti. Nuestros entrenadores personales diseñarán rutinas adaptadas a tus 
+            necesidades y te guiarán en cada paso del camino hacia una vida más saludable.
+        </p>
+
+        <button class="btn-toggle" onclick="toggleMision()">Ocultar seccion</button>
+
+        <div id="mision">
+            <h2>Nuestra misión</h2>
+            <p>
+                Promover un estilo de vida activo y saludable, creando una comunidad donde cada 
+                persona pueda superarse día a día en un entorno seguro, profesional y acogedor.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Galería del gimnasio</h2>
+        <div class="carrusel">
+            <img src="imagenes/IMG_1350.jpeg" alt="imagen gimnasio" class="activa">
+            <img src="imagenes/IMG_1352.jpeg" alt="imagen musculacion">
+            <img src="imagenes/IMG_1353.jpeg" alt="imagen cardio">
+            <img src="imagenes/IMG_1354.jpeg" alt="imagen peso">
+            <img src="imagenes/IMG_1355.jpeg" alt="imagen nutricion">
+        </div>
+        <div class="carrusel-btns">
+            <button onclick="cambiarSlide(-1)">← Anterior</button>
+            <button onclick="cambiarSlide(1)">Siguiente →</button>
+        </div>
+    </section>
+
+    <section>
+        <article>
+            <h3>Nuevo gimnasio en mallorca</h3>
+            <p>En TJA, ubicado en pleno corazón de Mallorca, nos apasiona ayudar a cada persona a alcanzar su mejor versión. Somos un gimnasio moderno, equipado con maquinaria de última generación y un equipo de entrenadores cualificados que te acompañarán en cada paso de tu progreso.
+
+Ofrecemos un ambiente cercano, motivador y pensado para todos los niveles, desde principiantes hasta deportistas avanzados. Nuestro objetivo es que entrenes de forma segura, eficaz y con una experiencia positiva cada día.
+
+Aquí encontrarás espacios amplios, zonas específicas de fuerza y cardio, clases dirigidas, asesoramiento personalizado y programas adaptados a tus metas: perder peso, ganar masa muscular, mejorar tu salud o simplemente mantenerte activo.
+
+En TJA no solo entrenas: formas parte de una comunidad que comparte disciplina, energía y ganas de superarse.
+Tu cambio empieza hoy. ¡Te esperamos!
+            </p>
+            <img id="imgDestacada" src="imagenes/IMG_1350.jpeg" alt="imagen cardio gimnasio">
+        </article>
+    </section>
+</main>
+    
+<footer>
+    <section id="redes-sociales">
+        <h3>Síguenos</h3>
+        <ul>
+            <li><a href="https://facebook.com/tjagym" target="_blank">Facebook</a></li>
+            <li><a href="https://instagram.com/tjagym" target="_blank">Instagram</a></li>
+        </ul>
+    </section>
+    <p>&copy; 2025 TJA Gym. Todos los derechos reservados.</p>
+</footer>
+
+<script src="js/script.js"></script>
+<script>
+    var slideActual = 0;
+
+    function cambiarSlide(dir) {
+        var slides = document.querySelectorAll('.carrusel img');
+        slides[slideActual].classList.remove('activa');
+        slideActual = slideActual + dir;
+        if (slideActual < 0) slideActual = slides.length - 1;
+        if (slideActual >= slides.length) slideActual = 0;
+        slides[slideActual].classList.add('activa');
+    }
+
+    setInterval(function() {
+        cambiarSlide(1);
+    }, 4000);
+
+    function toggleMision() {
+        var div = document.getElementById('mision');
+        var btn = event.target;
+        if (div.style.display === 'none') {
+            div.style.display = 'block';
+            btn.textContent = 'Ocultar seccion';
+        } else {
+            div.style.display = 'none';
+            btn.textContent = 'Mostrar seccion';
+        }
+    }
+
+    var img = document.getElementById('imgDestacada');
+    img.onmouseover = function() {
+        this.style.transform = 'scale(1.04)';
+        this.style.border = '3px solid #E07A2E';
+        this.style.transition = 'all 0.3s ease';
+    }
+    img.onmouseout = function() {
+        this.style.transform = 'scale(1)';
+        this.style.border = 'none';
+    }
+</script>
+</body>
+</html>
